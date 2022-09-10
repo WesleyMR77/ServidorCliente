@@ -14,9 +14,7 @@ public class Client {
 			Socket client = new Socket("localhost", 8888);
 			Message m = new Message();
                         ObjectInputStream entrada = new ObjectInputStream(client.getInputStream());
-			//String data = (String) m.getMessage();
                         String data = (String) entrada.readObject();
-                        
 			System.out.println("Informação recebida:" + data);
 			client.close();
 			System.out.println("Conexão encerrada");
