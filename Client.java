@@ -11,14 +11,20 @@ import java.sql.Date;
 public class Client {
 	public static void main(String[] args) {
 		try {
-			Socket c = new Socket("localhost", 8888);
+			Socket client = new Socket("localhost", 8888);
 			Message m = new Message();
-			String data = (String) m.getMessage();
+                        ObjectInputStream entrada = new ObjectInputStream(client.getInputStream());
+			//String data = (String) m.getMessage();
+                        String data = (String) entrada.readObject();
+                        
 			System.out.println("Informação recebida:" + data);
-			//m.close();
+			client.close();
 			System.out.println("Conexão encerrada");
 		} catch (Exception e) {
 			System.out.println("Erro: " + e.getMessage());
 		}
 	}
 }
+
+			
+			
